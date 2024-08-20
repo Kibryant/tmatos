@@ -1,10 +1,14 @@
-import { ModeTheme } from '@/components/mode-theme'
+import { Footer } from '@/components/footer'
+import { Header } from '@/components/header'
 
 export default function Home() {
   return (
-    <main>
-      <h1>hello, world</h1>
-      <ModeTheme />
-    </main>
+    <>
+      <Header />
+      <main>
+        <h1 className="text-primary">hello, world</h1>
+      </main>
+      <Footer />
+    </>
   )
 }
