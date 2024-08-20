@@ -2,6 +2,8 @@
   "name": "tmatos",
   "version": "0.1.0",
   "private": true,
+  "author": "Arthur Gustavo",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,6 +15,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.428.0",
     "next": "14.2.5",
+    "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.5.2",
