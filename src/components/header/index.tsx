@@ -12,6 +12,7 @@ import { HeaderTitle } from './header-title'
 export function Header() {
   return (
     <motion.header
+      id="inicio"
       className="relative min-h-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -19,7 +20,7 @@ export function Header() {
     >
       <Navbar />
 
-      <Section className="flex flex-col justify-center items-center px-4 py-8 md:px-8 lg:flex-row lg:justify-between lg:py-16">
+      <Section className="flex flex-col justify-center items-center px-4 py-8 md:mt-40 md:px-8 lg:flex-row lg:justify-between lg:py-16">
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
