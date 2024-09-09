@@ -119,9 +119,7 @@ const team = [
 
 export function Main() {
   const controls = useAnimation()
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-  })
+  const [ref, inView] = useInView()
 
   useEffect(() => {
     if (inView) {
@@ -158,7 +156,7 @@ export function Main() {
                 </div>
                 <Button
                   type="submit"
-                  className="w-full text-secondary-foreground"
+                  className="w-full text-white dark:text-secondary-foreground"
                 >
                   Enviar
                 </Button>

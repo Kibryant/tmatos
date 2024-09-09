@@ -27,8 +27,10 @@ export function Header() {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="lg:w-1/2 lg:pr-8"
         >
-          <Badge variant="outline">
-            Procurando uma empresa completa para marketing?
+          <Badge variant="outline" className="flex items-center justify-center">
+            <span className="text-[10px]">
+              Procurando uma empresa completa para marketing?
+            </span>
             <TargetIcon className="ml-2 text-primary" />
           </Badge>
           <HeaderTitle>
