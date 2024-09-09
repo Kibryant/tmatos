@@ -13,14 +13,14 @@ export function Header() {
   return (
     <motion.header
       id="inicio"
-      className="relative min-h-screen"
+      className="relative min-h-screen mb-20 md:mb-0"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
       <Navbar />
 
-      <Section className="flex flex-col justify-center items-center px-4 py-8 md:mt-40 md:px-8 lg:flex-row lg:justify-between lg:py-16">
+      <Section className="flex flex-col justify-center items-center px-4 md:flex-row md:justify-center md:items-center md:h-screen">
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -42,7 +42,7 @@ export function Header() {
             whileHover={{ scale: 1.05 }}
             transition={{ type: 'spring', stiffness: 300 }}
           >
-            <Button className="w-full lg:w-auto text-secondary-foreground uppercase font-bold button-shadow">
+            <Button className="w-full lg:w-auto uppercase font-bold button-shadow dark:text-secondary-foreground">
               Quero mais informações
             </Button>
           </motion.div>
@@ -65,7 +65,7 @@ export function Header() {
 
       <a
         href="#services"
-        className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 sm:bottom-0"
+        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 sm:bottom-0"
       >
         <ChevronDown className="text-primary w-20 h-20 animate-bounce" />
       </a>

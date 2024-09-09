@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { NavbarLink } from './navbar-link'
 import { useScroll } from '@/hooks/useScroll'
+import { ModeTheme } from '../mode-theme'
 
 export function Navbar() {
   const { backgroundColor } = useScroll()
@@ -21,7 +22,7 @@ export function Navbar() {
 
   return (
     <div
-      className={`w-full border-b border-primary flex justify-between items-center transition duration-500 py-2 sm:fixed sm:top-0 sm:left-0 ${backgroundColor === 'bg-background' && backgroundColor}`}
+      className={`w-full border-b border-primary flex justify-between items-center transition duration-500 py-2 z-50 sm:fixed sm:top-0 sm:left-0 ${backgroundColor === 'bg-background' && backgroundColor}`}
     >
       <div
         className={`${
@@ -53,6 +54,7 @@ export function Navbar() {
 
         {/* Navbar Links (desktop) */}
         <nav className="hidden md:flex md:items-center md:space-x-6">
+          <ModeTheme />
           <NavbarLink href="#inicio">Inicio</NavbarLink>
           <NavbarLink href="#servicos">About</NavbarLink>
           <a
@@ -72,7 +74,7 @@ export function Navbar() {
 
       {/* Navbar links (mobile) */}
       <div
-        className={`fixed top-0 right-0 h-full w-2/3 border-l bg-background border-primary text-white z-30 transition-transform transform ${
+        className={`fixed top-0 right-0 h-full w-2/3 border-l bg-background border-primary z-30 transition-transform transform ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         } duration-300 ease-in-out`}
       >
@@ -123,6 +125,7 @@ export function Navbar() {
           >
             Contact
           </a>
+          <ModeTheme />
         </nav>
       </div>
     </div>
