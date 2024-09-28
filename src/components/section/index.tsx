@@ -1,4 +1,5 @@
-import { forwardRef, ReactNode } from 'react'
+import { forwardRef } from 'react'
+import type { ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
 interface SectionProps {
@@ -11,11 +12,11 @@ const Section = forwardRef<HTMLElement, SectionProps>(
   ({ children, className, id }: SectionProps, ref) => {
     return (
       <section
-        className="w-full mt-10 flex justify-center items-center"
+        className="w-full flex justify-center items-center py-20 md:py-44"
         id={id || ''}
         ref={ref}
       >
-        <div className={cn('w-full max-w-7xl ' + className)}>{children}</div>
+        <div className={cn(`w-full max-w-7xl ${className}`)}>{children}</div>
       </section>
     )
   },

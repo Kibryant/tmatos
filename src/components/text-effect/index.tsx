@@ -1,5 +1,5 @@
 'use client'
-import { motion, Variants } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import React from 'react'
 
 type PresetType = 'blur' | 'shake' | 'scale' | 'fade' | 'slide'
@@ -95,7 +95,7 @@ const AnimationComponent: React.FC<{
     <span className="inline-block whitespace-pre">
       {word.split('').map((char, charIndex) => (
         <motion.span
-          key={`char-${charIndex}`}
+          key={`char-${charIndex + 1}`}
           aria-hidden="true"
           variants={variants}
           className="inline-block whitespace-pre"
@@ -135,7 +135,7 @@ export function TextEffect({
     >
       {words.map((word, wordIndex) => (
         <AnimationComponent
-          key={`word-${wordIndex}`}
+          key={`word-${wordIndex + 1}`}
           word={word}
           variants={itemVariants}
           per={per}

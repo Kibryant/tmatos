@@ -28,7 +28,7 @@ export function Navbar() {
         className={`${
           isOpen ? 'fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md' : ''
         } transition-all duration-300`}
-      ></div>
+      />
 
       <div className="w-full px-10 py-4 flex justify-between items-center">
         <Image src="/logo-blue.png" alt="logo" width={60} height={60} />
@@ -56,18 +56,18 @@ export function Navbar() {
         <nav className="hidden md:flex md:items-center md:space-x-6">
           <ModeTheme />
           <NavbarLink href="#inicio">Inicio</NavbarLink>
-          <NavbarLink href="#servicos">About</NavbarLink>
+          <NavbarLink href="#servicos">Sobre</NavbarLink>
           <a
             href="#services"
             className="block py-2 md:inline md:py-0 hover:text-gray-400 transition-all"
           >
-            Services
+            Serviços
           </a>
           <a
             href="#contact"
             className="block py-2 md:inline md:py-0 hover:text-gray-400 transition-all"
           >
-            Contact
+            Contato
           </a>
         </nav>
       </div>

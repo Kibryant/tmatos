@@ -19,6 +19,7 @@ import { MarketingTools } from '../marketing-tools'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { Textarea } from '../ui/textarea'
+import { ProvenResults } from '../proven-results'
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -52,12 +53,6 @@ const services = [
   },
 ]
 
-const results = [
-  { number: '500+', description: 'Projetos Entregues' },
-  { number: '98%', description: 'Clientes Satisfeitos' },
-  { number: '200%', description: 'Aumento Médio em Conversões' },
-]
-
 const testimonials = [
   {
     name: 'Maria Silva',
@@ -78,19 +73,19 @@ const portfolio = [
     title: 'E-commerce de Moda',
     description:
       'Desenvolvimento de plataforma de e-commerce com integração de pagamentos e gestão de estoque.',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '/images/portfolio-1.png',
   },
   {
     title: 'App de Delivery',
     description:
       'Aplicativo móvel para entrega de alimentos com rastreamento em tempo real.',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '/images/portfolio-2.png',
   },
   {
     title: 'Campanha de Marketing Digital',
     description:
       'Estratégia omnichannel que aumentou as vendas em 150% em 6 meses.',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '/images/portfolio-3.png',
   },
 ]
 
@@ -129,7 +124,7 @@ export function Main() {
 
   return (
     <main ref={ref}>
-      <Section className="mb-20">
+      <Section id="contato" className="">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12">
             Entre <span className="text-primary">em Contato</span>
@@ -170,9 +165,9 @@ export function Main() {
               variants={fadeIn}
               transition={{ delay: 0.2 }}
             >
-              <div>
-                <h3 className="text-2xl font-semibold mb-4">
-                  Entraremos em contato{' '}
+              <div className="px-4">
+                <h3 className="text-2xl font-semibold mb-4 text-center">
+                  Entraremos em contato <br />
                   <span className="text-primary">em até 24 horas!</span>
                 </h3>
                 <p className="text-lg">
@@ -182,12 +177,12 @@ export function Main() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="p-6 rounded-md text-center bg-gradient-to-r from-primary to-primary-foreground">
+                <div className="p-6 rounded-md text-center shadow-md border border-primary dark:bg-gradient-to-r dark:from-primary dark:to-primary-foreground">
                   <ShieldCheck className="w-8 h-8 mx-auto mb-4" />
                   <h4 className="text-xl font-semibold mb-2">Seguro</h4>
                   <p>Seus dados estão protegidos e seguros conosco.</p>
                 </div>
-                <div className="p-6 rounded-md text-center bg-gradient-to-r from-primary to-primary-foreground">
+                <div className="p-6 rounded-md text-center shadow-md border border-primary dark:bg-gradient-to-r dark:from-primary dark:to-primary-foreground">
                   <Mail className="w-8 h-8 mx-auto mb-4" />
                   <h4 className="text-xl font-semibold mb-2">Retorno rápido</h4>
                   <p>Responderemos sua mensagem por e-mail em até 24 horas.</p>
@@ -198,7 +193,7 @@ export function Main() {
         </div>
       </Section>
 
-      <Section className="container mx-auto px-4 mb-20 text-center">
+      <Section className="">
         <div className="flex items-center justify-center gap-x-2">
           <RocketIcon size={20} className="text-primary" />
           <h1 className="font-bold bg-gradient-to-r from-primary via-primary/95 to-background bg-clip-text text-transparent">
@@ -206,7 +201,7 @@ export function Main() {
           </h1>
         </div>
         <motion.h2
-          className="text-4xl font-bold mb-6"
+          className="text-4xl font-bold mb-6 text-center"
           initial="hidden"
           animate="visible"
           variants={fadeIn}
@@ -217,7 +212,7 @@ export function Main() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <motion.div
-                key={index}
+                key={service.title}
                 className="border border-primary p-6 rounded-md shadow-md hover:shadow-lg transition duration-300 ease-in-out"
                 whileHover={{ y: -5 }}
                 initial="hidden"
@@ -237,32 +232,9 @@ export function Main() {
         </div>
       </Section>
 
-      <Section className="mb-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">
-            Resultados <span className="text-primary">Comprovados</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {results.map((result, index) => (
-              <motion.div
-                key={index}
-                className="text-center"
-                initial="hidden"
-                animate={controls}
-                variants={fadeIn}
-                transition={{ delay: index * 0.1 }}
-              >
-                <div className="text-4xl font-bold mb-2 text-primary">
-                  {result.number}
-                </div>
-                <div className="text-xl">{result.description}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </Section>
+      <ProvenResults />
 
-      <Section className="mb-20">
+      <Section className="">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12">
             O que nossos <span className="text-primary">clientes dizem</span>
@@ -270,7 +242,7 @@ export function Main() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
-                key={index}
+                key={testimonial.content}
                 className="p-6 rounded-md shadow-md border border-primary"
                 initial="hidden"
                 animate={controls}
@@ -280,7 +252,7 @@ export function Main() {
                 <p className="mb-4">{testimonial.content}</p>
                 <div className="flex items-center">
                   <Image
-                    src={`/placeholder.svg?height=50&width=50`}
+                    src="https://github.com/Kibryant.png"
                     alt={testimonial.name}
                     width={50}
                     height={50}
@@ -299,7 +271,7 @@ export function Main() {
         </div>
       </Section>
 
-      <Section className="mb-20">
+      <Section id="portfolio" className="">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12">
             Nosso <span className="text-primary">Portfólio</span>
@@ -307,7 +279,7 @@ export function Main() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolio.map((project, index) => (
               <motion.div
-                key={index}
+                key={project.title}
                 className="rounded-md overflow-hidden shadow-md hover:shadow-lg transition duration-300 ease-in-out border border-primary"
                 initial="hidden"
                 animate={controls}
@@ -333,7 +305,7 @@ export function Main() {
         </div>
       </Section>
 
-      <Section className="mb-20">
+      <Section className="">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
             Nossa <span className="text-primary">Equipe</span>
@@ -341,7 +313,7 @@ export function Main() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, index) => (
               <motion.div
-                key={index}
+                key={member.name}
                 className="border border-primary rounded-md overflow-hidden shadow-md hover:shadow-lg transition duration-300 ease-in-out text-center"
                 initial="hidden"
                 animate={controls}
@@ -367,7 +339,7 @@ export function Main() {
         </div>
       </Section>
 
-      <Section id="services" className="mb-20">
+      <Section id="services" className="">
         <h2 className="text-4xl font-bold text-center">
           Nossos <span className="text-primary">Serviços</span>
         </h2>

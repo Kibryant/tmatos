@@ -1,28 +1,40 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react'
-import Slider from 'react-slick'
+import Slider, { type Settings } from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 import {
-  Chrome,
-  Facebook,
-  BarChart2,
-  Code2,
-  Smartphone,
+  GoogleAnalytics,
+  Nextjs,
+  ReactIcon,
+  Android,
+  Gmail,
   Apple,
   Instagram,
   Linkedin,
-  Twitter,
-  Mail,
-} from 'lucide-react'
+  Figma,
+  Python,
+} from '../icons'
 
-// Importe o CSS do react-slick (você precisará instalar via npm)
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+const ICONS = [
+  { Icon: GoogleAnalytics, name: 'Google Analytics' },
+  { Icon: Nextjs, name: 'Next.js' },
+  { Icon: ReactIcon, name: 'React Native' },
+  { Icon: Apple, name: 'iOS' },
+  { Icon: Android, name: 'Android' },
+  { Icon: ReactIcon, name: 'React' },
+  { Icon: Instagram, name: 'Instagram' },
+  { Icon: Linkedin, name: 'LinkedIn' },
+  { Icon: Gmail, name: 'Email Marketing' },
+  { Icon: Figma, name: 'Figma' },
+  { Icon: Python, name: 'Python' },
+]
 
 export function MarketingTools() {
   const sliderRef = useRef<Slider>(null)
 
-  const settings = {
+  const settings: Settings = {
     dots: false,
     infinite: true,
     slidesToShow: 6,
@@ -55,19 +67,6 @@ export function MarketingTools() {
     ],
   }
 
-  const icons = [
-    { Icon: Chrome, name: 'Google Ads' },
-    { Icon: Facebook, name: 'Facebook Ads' },
-    { Icon: BarChart2, name: 'Google Analytics' },
-    { Icon: Code2, name: 'Next.js' },
-    { Icon: Smartphone, name: 'React Native' },
-    { Icon: Apple, name: 'iOS' },
-    { Icon: Instagram, name: 'Instagram' },
-    { Icon: Linkedin, name: 'LinkedIn' },
-    { Icon: Twitter, name: 'Twitter' },
-    { Icon: Mail, name: 'Email Marketing' },
-  ]
-
   useEffect(() => {
     const slider = sliderRef.current
     if (slider) {
@@ -91,18 +90,19 @@ export function MarketingTools() {
 
   return (
     <div className="relative">
-      <Slider ref={sliderRef} {...settings} className="icon-carousel mt-20">
-        {icons.map(({ Icon, name }, index) => (
+      <Slider
+        ref={sliderRef}
+        {...settings}
+        className="icon-carousel mt-20 py-4"
+      >
+        {ICONS.map(({ Icon, name }) => (
           <div
-            key={index}
+            key={name}
             className="flex flex-col items-center justify-center px-4 transition-transform transform hover:scale-110"
           >
-            <div className="bg-white rounded-full p-6 shadow-lg flex items-center justify-center mb-2 hover:bg-gray-100 transition duration-300">
-              <Icon size={40} className="text-primary" />
+            <div className="bg-background rounded-full w-20 h-20 shadow-lg flex items-center justify-center dark:border dark:border-primary dark:shadow-none">
+              <Icon className="fill-primary size-10 text-primary" />
             </div>
-            <span className="text-xs text-secondary-foreground font-medium">
-              {name}
-            </span>
           </div>
         ))}
       </Slider>

@@ -1,23 +1,17 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useInView, type Variants } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Instagram,
-  Linkedin,
-  Facebook,
-} from 'lucide-react'
+import { Facebook, Gmail, Instagram, Linkedin, WhatsApp } from '../icons'
+import { MapPin } from 'lucide-react'
+import { useRef } from 'react'
 
 const navLinks = [
-  { name: 'Home', href: '#incio' },
+  { name: 'Home', href: '#inicio' },
   { name: 'Serviços', href: '#servicos' },
   { name: 'Portfólio', href: '#portfolio' },
   { name: 'Contato', href: '/contato' },
-  { name: 'Blog', href: '/blog' },
 ]
 
 const socialLinks = [
@@ -26,18 +20,25 @@ const socialLinks = [
   { name: 'Facebook', icon: Facebook, href: 'https://facebook.com' },
 ]
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 },
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
 }
 
 export function Footer() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+
   return (
-    <footer className="bg-primary text-white  ">
+    <footer className="bg-primary text-white" ref={ref}>
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <motion.div className="flex flex-col items-start" {...fadeInUp}>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <motion.div
+            className="flex flex-col items-center lg:items-start text-center lg:text-left"
+            variants={fadeInUp}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+          >
             <Image
               src="/logo-white.png"
               alt="Logo da Agência Digital"
@@ -50,10 +51,11 @@ export function Footer() {
             </p>
           </motion.div>
 
-          {/* Links de Navegação */}
           <motion.nav
-            className="flex flex-col items-center md:items-start"
-            {...fadeInUp}
+            className="flex flex-col items-center lg:items-start text-center lg:text-left"
+            variants={fadeInUp}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
           >
             <h3 className="text-lg font-semibold mb-4">Navegação</h3>
             <ul className="space-y-2">
@@ -61,7 +63,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className=" hover:text-white transition duration-300"
+                    className="hover:text-white transition duration-300"
                   >
                     {link.name}
                   </Link>
@@ -70,25 +72,29 @@ export function Footer() {
             </ul>
           </motion.nav>
 
-          {/* Contato e Redes Sociais */}
-          <motion.div className="flex flex-col items-end" {...fadeInUp}>
+          <motion.div
+            className="flex flex-col items-center lg:items-end text-center lg:text-right"
+            variants={fadeInUp}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+          >
             <h3 className="text-lg font-semibold mb-4">Contato</h3>
-            <div className="flex flex-col items-end space-y-2">
+            <div className="flex flex-col items-center lg:items-end space-y-2">
               <a
                 href="mailto:contato@agenciadigital.com"
-                className="flex items-center  hover:text-white transition duration-300"
+                className="flex items-center hover:text-white transition duration-300"
               >
-                <Mail className="w-5 h-5 mr-2" />
+                <Gmail className="w-5 h-5 mr-2" />
                 contato@agenciadigital.com
               </a>
               <a
                 href="tel:+551199999999"
-                className="flex items-center  hover:text-white transition duration-300"
+                className="flex items-center hover:text-white transition duration-300"
               >
-                <Phone className="w-5 h-5 mr-2" />
+                <WhatsApp className="w-5 h-5 mr-2" />
                 (11) 9999-9999
               </a>
-              <div className="flex items-center ">
+              <div className="flex items-center lg:justify-end">
                 <MapPin className="w-5 h-5 mr-2 flex-shrink-0" />
                 <address className="not-italic">
                   Rua da Inovação, 123 - Tech Valley
@@ -104,9 +110,9 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className=" hover:text-white transition duration-300"
+                  className="hover:text-white transition duration-300"
                 >
-                  <social.icon className="w-6 h-6" />
+                  <social.icon className="w-6 h-6 fill-white" />
                 </a>
               ))}
             </div>
@@ -114,9 +120,9 @@ export function Footer() {
         </div>
 
         <motion.div
-          className="mt-8 pt-8 border-t border-gray-800 text-center text-sm "
+          className="mt-8 pt-8 border-t border-gray-800 text-center text-sm"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 0.5, duration: 0.5 }}
         >
           <p>
@@ -125,12 +131,12 @@ export function Footer() {
           <p className="mt-2">
             Desenvolvido com ❤️ por{' '}
             <a
-              href="https://www.agenciadigital.com"
+              href="https://www.github.com/Kibryant"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition duration-300"
             >
-              Equipe Agência Digital
+              Arthur Gustavo
             </a>
           </p>
         </motion.div>
